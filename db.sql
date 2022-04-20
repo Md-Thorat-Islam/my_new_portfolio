@@ -1,0 +1,21 @@
+CREATE TABLE `db_my_portfolio`.`menu_tb` (
+  `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL DEFAULT '',
+  `href` VARCHAR(45) NOT NULL DEFAULT '',
+  `target` VARCHAR(45) NOT NULL DEFAULT '0',
+  `selected` VARCHAR(45) NOT NULL DEFAULT '0',
+  `disable` VARCHAR(45) NOT NULL DEFAULT '0',
+  `section` VARCHAR(45) NOT NULL DEFAULT '0',
+  `create_at` TIMESTAMP,
+  PRIMARY KEY(`id`)
+)
+ENGINE = InnoDB;
+CREATE TABLE `db_my_portfolio`.`title_tb` (
+  `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL DEFAULT '',
+  `menu_href_id` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+  `disable` VARCHAR(45) NOT NULL DEFAULT '0',
+  `create_at` TIMESTAMP,
+  PRIMARY KEY(`id`)
+)
+ENGINE = InnoDB;
