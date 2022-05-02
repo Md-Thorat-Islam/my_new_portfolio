@@ -1,254 +1,18 @@
-<?php require("db_config.php"); ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="copyright" content="MACode ID, https://www.macodeid.com/">
-  
-  <title>Virtual Folio - Portfolio HTML5 Template</title>
-
-  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="assets/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
-  <link rel="stylesheet" type="text/css" href="assets/vendor/owl-carousel/owl.carousel.css">
-  <link rel="stylesheet" type="text/css" href="assets/vendor/perfect-scrollbar/css/perfect-scrollbar.css">
-  <link rel="stylesheet" type="text/css" href="assets/vendor/nice-select/css/nice-select.css">
-  <link rel="stylesheet" type="text/css" href="assets/vendor/fancybox/css/jquery.fancybox.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/virtual.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/topbar.virtual.css">
-</head>
+<?php require("db_config.php");
+require("head.php");
+include("lib/array_function.php");
+?>
 <body class="theme-green">
   <!-- Back to top button -->
   <div class="btn-back_to_top bg-danger">
     <span class="ti-arrow-up"></span>
   </div>
-  
-  <!-- Setting button -->
-  <div class="config">
-    <div class="template-config">
-      <!-- Settings -->
-      <div class="d-block">
-        <button class="btn btn-fab btn-sm" id="sideel" title="Settings"><span class="ti-settings"></span></button>
-      </div>
-      <!-- Puschase -->
-      <div class="d-block">
-        <a href="" class="btn btn-fab btn-sm" download="" title="Get this CV"
-           data-toggle="tooltip" data-placement="left"><span class="ti-download"></span></a>
-      </div>
-    </div>
-    <div class="set-menu">
-      <p>Select Color</p>
-      <div class="color-bar" data-toggle="selected">
-            <span class="color-item bg-theme-green selected" data-class="theme-green"></span>
-            <span class="color-item bg-theme-red" data-class="theme-red"></span>
-            <span class="color-item bg-theme-blue" data-class="theme-blue"></span>
-            <span class="color-item bg-theme-orange" data-class="theme-orange"></span>
-            <span class="color-item bg-theme-purple" data-class="theme-purple"></span>
-      </div>
-    </div>
-  </div>
-  
-  <div class="vg-page page-home" id="home" style="background-image: url(assets/img/bg_image_1.jpg)">
-    <!-- Navbar -->
-    <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="300">
-      <div class="container">
-          <?php
-	        $result=$db->query("SELECT a.id ,a.name,b.href,a.disable,b.href From title_tb a,menu_tb b where b.id=a.menu_href_id ORDER
-BY a
-.id DESC");
-	        list($id,$name,$href,$disable)=$result->fetch_row();;
-	        ?>
-          <a href="<?php if ($href="home"){echo $_SERVER["PHP_SELF"];};?>" class="navbar-brand"><?php echo $name;?>
-        </a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
-          <span class="ti-menu"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navbar">
-          <ul class="navbar-nav ml-auto">
-              <?php
-              $result=$db->query("SELECT id,name,href from menu_tb");
-              foreach ($result as $row)
-              {
-              ?>
-                  <li class="nav-item">
-                      <a href="#<?php echo strtolower($row["href"]);?>" class="nav-link" data-animate="scrolling">
-                          <?php echo ucfirst($row["name"]);?>
-                      </a>
-                  </li>
-              <?php
-              }
-              ?>
-<!--            <li class="nav-item">-->
-<!--              <a href="#portfolio" class="nav-link" data-animate="scrolling">Portfolio</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <a href="#contact" class="nav-link" data-animate="scrolling">Contact</a>-->
-<!--            </li>-->
-          </ul>
-          <ul class="nav ml-auto">
-            <li class="nav-item">
-              <button class="btn btn-fab btn-theme no-shadow">
-                  <img src="assets/img/logo/my_sign.png" alt="" srcset="" width="50">
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> <!-- End Navbar -->
-    <!-- Caption header -->
-    <div class="caption-header text-center wow zoomInDown">
-      <h5 class="fw-normal">Welcome</h5>
-      <h1 class="fw-light mb-4">I'm <b class="fg-theme">Engr.</b>&ensp;Muhammad Tourat Islam</h1>
-      <div class="badge">Web Application Developer</div>
-    </div> <!-- End Caption header -->
-    <div class="floating-button"><span class="ti-mouse"></span></div>
-  </div>
-  
-  <div class="vg-page page-about" id="about">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-lg-4 py-3">
-          <div class="img-place wow fadeInUp">
-            <img src="../assets/img/person.jpg" alt="">
-          </div>
-        </div>
-        <div class="col-lg-6 offset-lg-1 wow fadeInRight">
-          <h1 class="fw-light">Stephen Doe</h1>
-          <h5 class="fg-theme mb-3">UI/UX & Web Designer</h5>
-          <p class="text-muted">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form but the majority have suffered alteration in some</p>
-          <ul class="theme-list">
-            <li><b>From:</b> Texas, US</li>
-            <li><b>Lives In:</b> Texas, US</li>
-            <li><b>Age:</b> 25</li>
-            <li><b>Gender:</b> Male</li>
-          </ul>
-          <button class="btn btn-theme-outline">Download CV</button>
-        </div>
-      </div>
-    </div>
-    <div class="container py-5">
-      <h1 class="text-center fw-normal wow fadeIn">My Skills</h1>
-      <div class="row py-3">
-        <div class="col-md-6">
-          <div class="px-lg-3">
-            <h4 class="wow fadeInUp">Coding skills</h4>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">JavaScript</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 86%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">86%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">PHP</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">80%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">HTML + CSS</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">100%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">Phyton</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">90%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="px-lg-3">
-            <h4 class="wow fadeInUp">Design Skills</h4>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">UI / UX Design</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 92%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">92%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">Web Design</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 99%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">99%</div>
-              </div>
-            </div>
-            <div class="progress-wrapper wow fadeInUp">
-              <span class="caption">Logo Design</span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 79%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">79%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container pt-5">
-      <div class="row">
-        <div class="col-md-6 wow fadeInRight">
-          <h2 class="fw-normal">Education</h2>
-          <ul class="timeline mt-4 pr-md-5">
-            <li>
-              <div class="title">2010</div>
-              <div class="details">
-                <h5>Specialize of course</h5>
-                <small class="fg-theme">University of Study</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-            <li>
-              <div class="title">2009</div>
-              <div class="details">
-                <h5>Specialize of course</h5>
-                <small class="fg-theme">University of Study</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-            <li>
-              <div class="title">2008</div>
-              <div class="details">
-                <h5>Specialize of course</h5>
-                <small class="fg-theme">University of Study</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6 wow fadeInRight" data-wow-delay="200ms">
-          <h2 class="fw-normal">Experience</h2>
-          <ul class="timeline mt-4 pr-md-5">
-            <li>
-              <div class="title">2017 - Current</div>
-              <div class="details">
-                <h5>Specialize of course</h5>
-                <small class="fg-theme">University of Study</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-            <li>
-              <div class="title">2014</div>
-              <div class="details">
-                <h5>Specialize of course</h5>
-                <small class="fg-theme">University of Study</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-            <li>
-              <div class="title">2011</div>
-              <div class="details">
-                <h5>Specialize of course</h5>
-                <small class="fg-theme">University of Study</small>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php
+  include("layout/settin_button.php");
+ include("layout/navbar.php");
+ 
+ include("pages/about.php");
+  ?>
   
   <div class="vg-page page-service">
     <div class="container">
@@ -305,7 +69,7 @@ BY a
     </div>
   </div>
   
-  <div class="vg-page page-funfact" style="background-image: url(../assets/img/bg_banner.jpg);">
+  <div class="vg-page page-funfact" style="background-image: url(assets/img/bg_banner.jpg);">
     <div class="container">
       <div class="row section-counter">
         <div class="col-md-6 col-lg-3 py-4 wow fadeIn">
@@ -347,8 +111,8 @@ BY a
 
       <div class="gridder my-3">
         <div class="grid-item apps wow zoomIn">
-          <div class="img-place" data-src="../assets/img/work/work-1.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
-            <img src="../assets/img/work/work-1.jpg" alt="">
+          <div class="img-place" data-src="assets/img/work/work-1.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+            <img src="assets/img/work/work-1.jpg" alt="">
             <div class="img-caption">
               <h5 class="fg-theme">Mobile Travel App</h5>
               <p>Travel, Discovery</p>
@@ -356,8 +120,8 @@ BY a
           </div>
         </div>
         <div class="grid-item template wireframes wow zoomIn">
-          <div class="img-place" data-src="../assets/img/work/work-2.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Music App</h5> <p>Musics</p>">
-            <img src="../assets/img/work/work-2.jpg" alt="">
+          <div class="img-place" data-src="assets/img/work/work-2.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Music App</h5> <p>Musics</p>">
+            <img src="assets/img/work/work-2.jpg" alt="">
             <div class="img-caption">
               <h5 class="fg-theme">Music App</h5>
               <p>Musics</p>
@@ -365,8 +129,8 @@ BY a
           </div>
         </div>
         <div class="grid-item apps ios wow zoomIn">
-          <div class="img-place" data-src="../assets/img/work/work-3.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Gaming Dashboard</h5> <p>Games, Streaming</p>">
-            <img src="../assets/img/work/work-3.jpg" alt="">
+          <div class="img-place" data-src="assets/img/work/work-3.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Gaming Dashboard</h5> <p>Games, Streaming</p>">
+            <img src="assets/img/work/work-3.jpg" alt="">
             <div class="img-caption">
               <h5 class="fg-theme">Gaming Dashboard</h5>
               <p>Games, Streaming</p>
@@ -374,8 +138,8 @@ BY a
           </div>
         </div>
         <div class="grid-item graphic ui-ux wow zoomIn">
-          <div class="img-place" data-src="../assets/img/work/work-4.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Drugs Delivery App</h5> <p>Health, Drugs</p>">
-            <img src="../assets/img/work/work-4.jpg" alt="">
+          <div class="img-place" data-src="assets/img/work/work-4.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Drugs Delivery App</h5> <p>Health, Drugs</p>">
+            <img src="assets/img/work/work-4.jpg" alt="">
             <div class="img-caption">
               <h5 class="fg-theme">Drugs Delivery App</h5>
               <p>Health, Drugs</p>
@@ -383,8 +147,8 @@ BY a
           </div>
         </div>
         <div class="grid-item apps ios wow zoomIn">
-          <div class="img-place" data-src="../assets/img/work/work-5.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Musics Discover</h5> <p>Musics, Dashboard</p>">
-            <img src="../assets/img/work/work-5.jpg" alt="">
+          <div class="img-place" data-src="assets/img/work/work-5.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Musics Discover</h5> <p>Musics, Dashboard</p>">
+            <img src="assets/img/work/work-5.jpg" alt="">
             <div class="img-caption">
               <h5 class="fg-theme">Musics Discover</h5>
               <p>Musics, Dashboard</p>
@@ -392,8 +156,8 @@ BY a
           </div>
         </div>
         <div class="grid-item graphic ui-ux wireframes wow zoomIn">
-          <div class="img-place" data-src="../assets/img/work/work-6.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Game Streaming</h5> <p>Games, Streaming</p>">
-            <img src="../assets/img/work/work-6.jpg" alt="">
+          <div class="img-place" data-src="assets/img/work/work-6.jpg" data-fancybox data-caption="<h5 class='fg-theme'>Game Streaming</h5> <p>Games, Streaming</p>">
+            <img src="assets/img/work/work-6.jpg" alt="">
             <div class="img-caption">
               <h5 class="fg-theme">Game Streaming</h5>
               <p>Games, Streaming</p>
@@ -418,7 +182,7 @@ BY a
               <div class="row">
                 <div class="col-md-6">
                   <div class="img-place">
-                    <img src="../assets/img/testimonials/testimonials_1.jpg" alt="">
+                    <img src="assets/img/testimonials/testimonials_1.jpg" alt="">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -426,7 +190,7 @@ BY a
                     <div class="testi-content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered</div>
                     <div class="testi-info">
                       <div class="thumb-profile">
-                        <img src="../assets/img/testimonials/testimonials_1.jpg" alt="">
+                        <img src="assets/img/testimonials/testimonials_1.jpg" alt="">
                       </div>
                       <div class="tagline">
                         <h5 class="mb-0">Satria Nugraha</h5>
@@ -441,7 +205,7 @@ BY a
               <div class="row">
                 <div class="col-md-6">
                   <div class="img-place">
-                    <img src="../assets/img/testimonials/testimonials_2.jpg" alt="">
+                    <img src="assets/img/testimonials/testimonials_2.jpg" alt="">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -449,7 +213,7 @@ BY a
                     <div class="testi-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe natus expedita ab facilis ut, animi explicabo amet. Voluptatibus possimus iste enim, doloremque, fugiat accusamus nisi optio fugit ratione expedita harum?</div>
                     <div class="testi-info">
                       <div class="thumb-profile">
-                        <img src="../assets/img/testimonials/testimonials_2.jpg" alt="">
+                        <img src="assets/img/testimonials/testimonials_2.jpg" alt="">
                       </div>
                       <div class="tagline">
                         <h5 class="mb-0">Selena Arrini</h5>
@@ -472,44 +236,44 @@ BY a
       <div class="row">
         <div class="col-md-6 col-lg-4 col-xl-3 item">
           <div class="img-place wow fadeInUp">
-            <img src="../assets/img/logo/company_1.svg" alt="">
+            <img src="assets/img/logo/company_1.svg" alt="">
           </div>
         </div>
         <div class="col-md-6 col-lg-4 col-xl-3 item">
           <div class="img-place wow fadeInUp">
-            <img src="../assets/img/logo/company_2.svg" alt="">
+            <img src="assets/img/logo/company_2.svg" alt="">
           </div>
         </div>
         <div class="col-md-6 col-lg-4 col-xl-3 item">
           <div class="img-place wow fadeInUp">
-            <img src="../assets/img/logo/company_3.svg" alt="">
+            <img src="assets/img/logo/company_3.svg" alt="">
           </div>
         </div>
         <div class="col-md-6 col-lg-4 col-xl-3 item">
           <div class="img-place wow fadeInUp">
-            <img src="../assets/img/logo/company_4.svg" alt="">
+            <img src="assets/img/logo/company_4.svg" alt="">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 col-lg-4 col-xl-3 item">
           <div class="img-place wow fadeInUp">
-            <img src="../assets/img/logo/company_5.svg" alt="">
+            <img src="assets/img/logo/company_5.svg" alt="">
           </div>
         </div>
         <div class="col-md-6 col-lg-4 col-xl-3 item">
           <div class="img-place wow fadeInUp">
-            <img src="../assets/img/logo/company_6.svg" alt="">
+            <img src="assets/img/logo/company_6.svg" alt="">
           </div>
         </div>
         <div class="col-md-6 col-lg-4 col-xl-3 item">
           <div class="img-place wow fadeInUp">
-            <img src="../assets/img/logo/company_7.svg" alt="">
+            <img src="assets/img/logo/company_7.svg" alt="">
           </div>
         </div>
         <div class="col-md-6 col-lg-4 col-xl-3 item">
           <div class="img-place wow fadeInUp">
-            <img src="../assets/img/logo/company_8.svg" alt="">
+            <img src="assets/img/logo/company_8.svg" alt="">
           </div>
         </div>
       </div>
@@ -527,7 +291,7 @@ BY a
         <div class="col-md-6 col-lg-4 wow fadeInUp">
           <div class="card">
             <div class="img-place">
-              <img src="../assets/img/work/work-9.jpg" alt="">
+              <img src="assets/img/work/work-9.jpg" alt="">
             </div>
             <div class="caption">
               <a href="javascript:void(0)" class="post-category">Technology</a>
@@ -539,7 +303,7 @@ BY a
         <div class="col-md-6 col-lg-4 wow fadeInUp">
           <div class="card">
             <div class="img-place">
-              <img src="../assets/img/work/work-6.jpg" alt="">
+              <img src="assets/img/work/work-6.jpg" alt="">
             </div>
             <div class="caption">
               <a href="javascript:void(0)" class="post-category">Business</a>
@@ -551,7 +315,7 @@ BY a
         <div class="col-md-6 col-lg-4 wow fadeInUp">
           <div class="card">
             <div class="img-place">
-              <img src="../assets/img/work/work-1.jpg" alt="">
+              <img src="assets/img/work/work-1.jpg" alt="">
             </div>
             <div class="caption">
               <a href="javascript:void(0)" class="post-category">Design</a>
@@ -684,6 +448,65 @@ BY a
   <script src="assets/js/topbar-virtual.js"></script>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script>
+  <script type="text/javascript">
+      var TxtRotate = function(el, toRotate, period) {
+          this.toRotate = toRotate;
+          this.el = el;
+          this.loopNum = 0;
+          this.period = parseInt(period, 10) || 2000;
+          this.txt = '';
+          this.tick();
+          this.isDeleting = false;
+      };
+
+      TxtRotate.prototype.tick = function() {
+          var i = this.loopNum % this.toRotate.length;
+          var fullTxt = this.toRotate[i];
+
+          if (this.isDeleting) {
+              this.txt = fullTxt.substring(0, this.txt.length - 1);
+          } else {
+              this.txt = fullTxt.substring(0, this.txt.length + 1);
+          }
+
+          this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+          var that = this;
+          var delta = 300 - Math.random() * 100;
+
+          if (this.isDeleting) { delta /= 2; }
+
+          if (!this.isDeleting && this.txt === fullTxt) {
+              delta = this.period;
+              this.isDeleting = true;
+          } else if (this.isDeleting && this.txt === '') {
+              this.isDeleting = false;
+              this.loopNum++;
+              delta = 500;
+          }
+
+          setTimeout(function() {
+              that.tick();
+          }, delta);
+      };
+
+      window.onload = function() {
+          var elements = document.getElementsByClassName('txt-rotate');
+          for (var i=0; i<elements.length; i++) {
+              var toRotate = elements[i].getAttribute('data-rotate');
+              var period = elements[i].getAttribute('data-period');
+              if (toRotate) {
+                  new TxtRotate(elements[i], JSON.parse(toRotate), period);
+              }
+          }
+          // INJECT CSS
+          var css = document.createElement("style");
+          css.type = "text/css";
+          css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+          document.body.appendChild(css);
+      };
+
+  </script>
   
 </body>
 </html>

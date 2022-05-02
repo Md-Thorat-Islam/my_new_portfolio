@@ -1,0 +1,47 @@
+#titlename  {
+    font-family: 'Courier New', Monospace;
+    font-size: 65px;
+    background-image:
+            linear-gradient(to right, #A5BFB0,#E4CEA4,#FA868C,#94C751,#E2CAB6,#C8DDD4,#BEE0ED, #B29948);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-animation 25s linear infinite;
+}
+
+@keyframes rainbow-animation {
+    to {
+        background-position: 5500vh;
+    }
+}
+@keyframes grow {
+    from {
+        font-size: 250px;
+    }
+    to {
+        font-size: 40px;
+    }
+}
+#wlcome{
+    animation-name: grow;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+#cf {
+    position:relative;
+    height:281px;
+    width:450px;
+    margin:0 auto;
+}
+
+#cf img {
+    position:absolute;
+    left:0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+#cf img.top:hover {
+    opacity:0;
+}
