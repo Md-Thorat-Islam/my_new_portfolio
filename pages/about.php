@@ -6,16 +6,46 @@
  * Time: 12:13 AM
  */
 
-$result=$db->query("SELECT a.name,b.position,b.lives_in_id,b.from_id,b.gender,b.curent_service_company, b.joining_date,b.leaves_date,b
-.discription,b.date_of_birth From users a,about b where a.id=b.user_id ORDER BY b.id DESC");
-list($name,$position,$lives_in_id,$from_id,$gender,$curent_service_company,$joining_date,$leaves_date,$discription,
-    $date_of_birth)
-    =$result->fetch_row();
-
+$result=$db->query("SELECT a.name,a.father_name,a.mother_name,a.nationality,a.primary_mobile,a.secondary_mobile,a.email,a.dob,a.gender_id,a.marital_status_id,a.nid,a
+.religion_id,
+a.home_town_divisions_id,
+a.home_town_districts_id,
+a.home_town_upazilas_id,
+a.current_location_divisions_id,
+a.current_location_districts_id,
+a.current_location_upazilas_id,
+b.description,a.status
+FROM users a, myself_tb b
+WHERE  a.id=b.users_id
+");
+$data=list(
+$name,//0
+$father_name,//1
+$mother_name,//2
+$nationality,//3
+$primary_mobile,//4
+$secondary_mobile,//5
+$email,//6
+$date_of_birth,//7
+$gender,//8
+$marital,//9
+$nid,//10
+$religion,//11
+$home_town_divisions_id,//12
+$home_town_districts_id,//13
+$home_town_upazilas_id,//14
+$current_location_divisions_id,//15
+$current_location_districts_id,//16
+$current_location_upazilas_id,//17
+$description,//18
+$status//19
+)=$result->fetch_row();
+// echo "<pre>";
+// print_r($data);
 $dateOfBirth = $date_of_birth;
 $today = date("Y-m-d");
 $diff = date_diff(date_create($dateOfBirth), date_create($today));
-$from_array=[1=>"Jamalpur"]
+
 ?>
 
 <div class="vg-page page-about" id="about">
@@ -29,13 +59,16 @@ $from_array=[1=>"Jamalpur"]
 			</div>
 			<div class="col-lg-7 offset-lg-1 wow fadeInRight">
 				<h1 class="fw-light"><?php echo $name;?></h1>
-				<h5 class="fg-theme mb-3"><?php echo $position;?></h5>
-				<p class="text-muted"><?php echo $discription;?></p>
+				<h5 class="fg-theme mb-3"><?php echo $description;?></h5>
+				<p class="text-muted"><?php ?></p>
 				<ul class="theme-list">
-					<li><b>From:</b>&ensp;<?php echo $from_array[$from_id];?></li>
-					<li><b>Lives In:</b>&ensp;<?php echo $district_array[$lives_in_id];?></li>
+					<li><b>From:</b>&ensp;<?php echo districts($data[13]);?></li>
+					<li><b>Lives In:</b>&ensp;<?php echo districts($data[16])?></li>
+					<li><b>Nationality:</b>&ensp;<?php echo $data[3];?></li>
 					<li><b>Age:</b>&ensp;<?php echo $diff->format('%y');?></li>
-					<li><b>Gender:</b> Male</li>
+					<li><b>Gender:</b>&ensp;<?php echo $gender_array[$data[8]];?></li>
+					<li><b>Religion:</b>&ensp;<?php echo $religion_array[$data[11]];?></li>
+					<li><b>Marital Status:</b>&ensp;<?php echo $maritalStatus_array[$data[9]];?></li>
 				</ul>
 				<button class="btn btn-theme-outline">Download CV</button>
 			</div>
