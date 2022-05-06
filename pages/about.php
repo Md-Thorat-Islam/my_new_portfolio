@@ -5,7 +5,6 @@
  * Date: 21-Apr-22
  * Time: 12:13 AM
  */
-
 $result=$db->query("SELECT a.name,a.father_name,a.mother_name,a.nationality,a.primary_mobile,a.secondary_mobile,a.email,a.dob,a.gender_id,a.marital_status_id,a.nid,a
 .religion_id,
 a.home_town_divisions_id,
@@ -45,31 +44,34 @@ $status//19
 $dateOfBirth = $date_of_birth;
 $today = date("Y-m-d");
 $diff = date_diff(date_create($dateOfBirth), date_create($today));
-
 ?>
-
 <div class="vg-page page-about" id="about">
-	<div class="container py-3">
+	<div class="container py-2">
 		<div class="row">
 			<div class="col-lg-4 py-2">
 				<div id="#cf" class="img-place wow fadeInUp">
-					<img class="bottom" src="assets/img/my.jpg" alt="">
-<!--					<img class="top" src="assets/img/mY2.jpg" alt="">-->
+					<img class="bottom" src="assets/img/my.jpg" alt="Your Image Not Found">
 				</div>
 			</div>
 			<div class="col-lg-7 offset-lg-1 wow fadeInRight">
-				<h1 class="fw-light"><?php echo $name;?></h1>
-				<h5 class="fg-theme mb-3"><?php echo $description;?></h5>
+				<h1 class="fw-light"><b><?php echo $name;?></b>
+				</h1>
+				<h5 class="fg-theme mb-2 text-justify" style="letter-spacing: -1px"> 
+					<?php echo $description;?>
+				</h5>
 				<p class="text-muted"><?php ?></p>
 				<ul class="theme-list">
-					<li><b>From:</b>&ensp;<?php echo districts($data[13]);?></li>
-					<li><b>Lives In:</b>&ensp;<?php echo districts($data[16])?></li>
-					<li><b>Nationality:</b>&ensp;<?php echo $data[3];?></li>
-					<li><b>Age:</b>&ensp;<?php echo $diff->format('%y');?></li>
-					<li><b>Gender:</b>&ensp;<?php echo $gender_array[$data[8]];?></li>
-					<li><b>Religion:</b>&ensp;<?php echo $religion_array[$data[11]];?></li>
-					<li><b>Marital Status:</b>&ensp;<?php echo $maritalStatus_array[$data[9]];?></li>
+					<li><b>From&ensp;:</b>&ensp;<?php echo districts($data[13]);?>
+					</li>
+					<li><b>Lives In&ensp;:</b>&ensp;<?php echo districts($data[16])?>
+					</li>
+					<li><b>Nationality&ensp;:</b>&ensp;<?php echo $data[3];?></li>
+					<li><b>Age&ensp;:</b>&ensp;<?php echo $diff->format('%y');?></li>
+					<li><b>Gender&ensp;:</b>&ensp;<?php echo $gender_array[$data[8]];?></li>
+					<li><b>Religion&ensp;:</b>&ensp;<?php echo $religion_array[$data[11]];?></li>
+					<li><b>Marital Status&ensp;:</b>&ensp;<?php echo $maritalStatus_array[$data[9]];?></li>
 				</ul>
+			
 				<button class="btn btn-theme-outline">Download CV</button>
 			</div>
 		</div>

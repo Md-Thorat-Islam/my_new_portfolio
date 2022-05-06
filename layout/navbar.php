@@ -19,7 +19,8 @@
         text-decoration: none;
         color: #fff;
     }
-    .menu {
+    .menu 
+	{
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -29,7 +30,7 @@
         padding: 0 30px;
         border-radius: 5px;
         background: rgb(255, 255, 255);
-        background: linear-gradient(236deg,rgba(255, 255, <black>, 0.8169642857142857) -15%,rgba(111, 174, 212, 1) 100%
+        background: linear-gradient(236deg,rgba(255, 255, black, 0.8169642857142857) -15%,rgba(111, 174, 212, 1) 100%
         );
     }
 
@@ -51,20 +52,19 @@
         position: relative;
         margin-left: 4px;
     }
-    
-    /*Lamp start*/
-    
-
 </style>
 <div class="vg-page page-home" id="home" style="background-image: url(assets/img/bg_image_1.jpg);">
-	<!-- Navbar -->
+	
 	<div class="navbar navbar-expand-lg navbar-dark sticky menu" data-offset="300">
 		<div class="container">
 			<?php
-			$result=$db->query("SELECT c.id,c.name,b.href,a.disable,b.href From title_tb a,menu_tb b, users c where b.id=a.menu_href_id and c.id=a.Users_id ORDER BY a.id DESC");
-			list($id,$name,$href,$disable)=$result->fetch_row();;
+			$result=$db->query("SELECT id,name From  users ORDER BY id DESC");
+			//id, users_id, menu_href_id, disable, create_at
+			list($id,$name)=$result->fetch_row();
 			?>
-			<a href="<?php if ($href="home"){echo $_SERVER["PHP_SELF"];};?>" class="navbar-brand nav-item-one"><?php echo $name;?>
+			<a href="
+			<?php if ($href="home"){echo $_SERVER["PHP_SELF"];};?>" class="navbar-brand nav-item-one">
+			<?php echo ucwords($name);?>
 			</a>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
 				<span class="ti-menu"></span>
@@ -72,7 +72,7 @@
 			<div class="collapse navbar-collapse" id="main-navbar">
 				<ul class="navbar-nav ml-auto">
 					<?php
-					$result=$db->query("SELECT id,name,href from menu_tb");
+					 $result=$db->query("SELECT id,name,href from menu_tb where users_id=$id");
 					foreach ($result as $row)
 					{
 						?>

@@ -1,19 +1,21 @@
 CREATE TABLE `db_my_portfolio`.`menu_tb` (
   `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `users_id` INTEGER UNSIGNED NOT NULL DEFAULT 0,
   `name` VARCHAR(45) NOT NULL DEFAULT '',
   `href` VARCHAR(45) NOT NULL DEFAULT '',
-  `target` VARCHAR(45) NOT NULL DEFAULT '0',
-  `selected` VARCHAR(45) NOT NULL DEFAULT '0',
-  `disable` VARCHAR(45) NOT NULL DEFAULT '0',
-  `section` VARCHAR(45) NOT NULL DEFAULT '0',
+  `target` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+  `selected` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+  `disable` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+  `section` INTEGER UNSIGNED NOT NULL DEFAULT 0,
   `create_at` TIMESTAMP,
   PRIMARY KEY(`id`)
 )
 ENGINE = InnoDB;
-insert into `db_my_portfolio`.`menu_tb`(name,href,target,selected,disable,section,create_at)values('home','home',0,0,
-0,0,now());
-insert into `db_my_portfolio`.`menu_tb`(name,href,target,selected,disable,section,create_at)values('about','about',0,0,0,0,now());
-insert into `db_my_portfolio`.`menu_tb`(name,href,target,selected,disable,section,create_at)values('about','about',0,0,0,0,now());
+
+insert into `db_my_portfolio`.`menu_tb`(users_id,name,href)values(1,'home','home');
+insert into `db_my_portfolio`.`menu_tb`(users_id,name,href)values(1,'about','about');
+insert into `db_my_portfolio`.`menu_tb`(users_id,name,href)values(1,'portfolio','portfolio');
+insert into `db_my_portfolio`.`menu_tb`(users_id,name,href)values(1,'contact','contact');
 
 
 CREATE TABLE `db_my_portfolio`.`title_tb` (

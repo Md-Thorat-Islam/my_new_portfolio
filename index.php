@@ -1,19 +1,18 @@
-<?php require("db_config.php");
-require("head.php");
-include("lib/array_function.php");
+<?php 
+  require("db_config.php");
+  require("head.php");
+  include("lib/array_function.php");
 ?>
 <body class="theme-green">
   <!-- Back to top button -->
-  <div class="btn-back_to_top bg-danger">
-    <span class="ti-arrow-up"></span>
+  <div class="btn-back_to_top bg-success">
+    <span class="ti-arrow-up text-danger"></span>
   </div>
   <?php
-  include("layout/settin_button.php");
- include("layout/navbar.php");
- 
- include("pages/about.php");
+    include("layout/settin_button.php");
+    include("layout/navbar.php");
+    include("pages/about.php");
   ?>
-  
   <div class="vg-page page-service">
     <div class="container">
       <div class="text-center wow fadeInUp">
